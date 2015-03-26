@@ -64,10 +64,11 @@ public class ServiceReceiver extends BroadcastReceiver {
         Log.i("ServiceReceiver", "url="+url);
         URL obj = new URL(url);
         URLConnection con;
-        if(url.contains("http"))
-            con = (HttpURLConnection) obj.openConnection();
-        else
+
+        if(url.contains("https"))
             con = (HttpsURLConnection) obj.openConnection();
+        else
+            con = (HttpURLConnection) obj.openConnection();
 
         if (obj.getUserInfo() != null) {
             String basicAuth = "Basic " + new String(Base64.encode(obj.getUserInfo().getBytes(), Base64.DEFAULT));
@@ -75,10 +76,10 @@ public class ServiceReceiver extends BroadcastReceiver {
         }
 
         //add reuqest header
-        if(url.contains("http"))
-            ((HttpURLConnection)con).setRequestMethod("POST");
-        else
+        if(url.contains("https"))
             ((HttpsURLConnection)con).setRequestMethod("POST");
+        else
+            ((HttpURLConnection)con).setRequestMethod("POST");
         String urlParameter = "n="+number;
 
         // Send post request
@@ -89,10 +90,10 @@ public class ServiceReceiver extends BroadcastReceiver {
         wr.close();
 
         int responseCode;
-        if(url.contains("http"))
-            responseCode = ((HttpURLConnection)con).getResponseCode();
-        else
+        if(url.contains("https"))
             responseCode = ((HttpsURLConnection)con).getResponseCode();
+        else
+            responseCode = ((HttpURLConnection)con).getResponseCode();
         Log.i("ServiceReceiver", "Sending 'POST' request to URL : " + url);
         Log.i("ServiceReceiver", "Post parameters : " + urlParameter);
         Log.i("ServiceReceiver", "ResponceCode: "+responseCode);

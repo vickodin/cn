@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Log.i("MainActivity", "save pref");
+                Toast.makeText(getApplicationContext(), "Сохранено", Toast.LENGTH_SHORT).show();
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("PhoneNumber", MODE_MULTI_PROCESS);
                 SharedPreferences.Editor ed = pref.edit();
                 ed.putString("host", hostEdt.getText().toString());
