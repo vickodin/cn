@@ -33,10 +33,10 @@ public class ServiceReceiver extends BroadcastReceiver {
                 switch (state){
                     case TelephonyManager.CALL_STATE_RINGING:
                         //Log.i("ServiceReceiver", "IncomingNumber:" + incomingNumber);
-                        Log.i("Time", Long.toString(Calendar.getInstance().getTimeInMillis()-prevTime));
+//                        Log.i("Time", Long.toString(Calendar.getInstance().getTimeInMillis()-prevTime));
                         long now_m = Calendar.getInstance().getTimeInMillis();
                         if(now_m-prevTime>2000 || now_m-prevTime==now_m) {
-                            Log.i("ServiceReceiver", "IncomingNumber:" + incomingNumber);
+//                            Log.i("ServiceReceiver", "IncomingNumber:" + incomingNumber);
                             SharedPreferences pref = context.getSharedPreferences("PhoneNumber", context.MODE_MULTI_PROCESS);
                             final String url = pref.getString("host", "");
                             new Thread(new Runnable() {
@@ -60,8 +60,8 @@ public class ServiceReceiver extends BroadcastReceiver {
     }
 
     void sentPost(String url, String number) throws Exception{
-        Log.i("ServiceReceiver", "sentPost()");
-        Log.i("ServiceReceiver", "url="+url);
+//        Log.i("ServiceReceiver", "sentPost()");
+//        Log.i("ServiceReceiver", "url="+url);
         URL obj = new URL(url);
         URLConnection con;
 
@@ -94,8 +94,8 @@ public class ServiceReceiver extends BroadcastReceiver {
             responseCode = ((HttpsURLConnection)con).getResponseCode();
         else
             responseCode = ((HttpURLConnection)con).getResponseCode();
-        Log.i("ServiceReceiver", "Sending 'POST' request to URL : " + url);
-        Log.i("ServiceReceiver", "Post parameters : " + urlParameter);
-        Log.i("ServiceReceiver", "ResponceCode: "+responseCode);
+//        Log.i("ServiceReceiver", "Sending 'POST' request to URL : " + url);
+//        Log.i("ServiceReceiver", "Post parameters : " + urlParameter);
+//        Log.i("ServiceReceiver", "ResponceCode: "+responseCode);
     }
 }

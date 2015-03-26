@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("MainActivity", "save pref");
+//                Log.i("MainActivity", "save pref");
                 Toast.makeText(getApplicationContext(), "Сохранено", Toast.LENGTH_SHORT).show();
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("PhoneNumber", MODE_MULTI_PROCESS);
                 SharedPreferences.Editor ed = pref.edit();
